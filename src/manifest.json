@@ -1,0 +1,44 @@
+{
+	"manifest_version" : 2,
+
+	"name": "SpoilerStopper",
+	"description" : "This extension blocks twitter posts with that contain user specified keywords",
+	"version" : "1.0.0",
+
+	"browser_action": {
+		  "default_popup": "popup.html", 
+		  "default_title": "Spoiler Stopper"
+	},
+
+	"background" : {
+		"scripts" 		: ["eventPage.js"],
+		"persistent" 	: false
+	},
+
+	"permissions" : [
+		"storage",
+		"activeTab",
+		"tabs",
+		"https://twitter.com/"
+	],
+
+	"web_accessible_resources": [
+
+	], 
+
+	"content_scripts": [
+		{
+			"matches" : [
+		 	"https://twitter.com/*"
+		 	],
+			"js" : [
+				"content.js"
+			],
+			"all_frames" : true
+
+		}
+	]
+
+
+
+}
